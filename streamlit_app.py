@@ -7,7 +7,7 @@ streamlit.text('Omega 3 & Blueberry Oatmeal')
 streamlit.text('Kale, Spinach & Rocket Smoothie')
 streamlit.text('Hard-Boiled Free-Range Egg')
 
-print(emoji.emojize('Python is :thumbs_up:'))
+streamlit.text(emoji.emojize('Python is :thumbs_up:')))
 streamlit.title('Build Your Own Fruit Smoothie')
 
 import pandas as pd
