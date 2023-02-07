@@ -1,3 +1,5 @@
+$ pip install emoji
+
 import streamlit
 import emoji
 
