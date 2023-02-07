@@ -10,7 +10,7 @@ streamlit.text('🥑 🍞 Avacado Toast')
 
 # streamlit.text("\U0001F600") --this code shows a smiley face emoji
 
-streamlit.header(':banana::strawberry: Build Your Own Fruit Smoothie :kiwifruit::grapes:') 
+streamlit.header(':banana::mango: Build Your Own Fruit Smoothie :kiwifruit::grapes:') 
 # streamlit.title('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 import pandas as pd
