@@ -1,7 +1,4 @@
-$ pip install emoji
-
 import streamlit
-import emoji
 
 streamlit.title("My Mom's New Healthy Diner")
 
