@@ -8,7 +8,8 @@ streamlit.text('🥗 Kale, Spinach & Rocket Smoothie')
 streamlit.text('🥚 Hard-Boiled Free-Range Egg')
 streamlit.text('🥑 🍞 Avacado Toast')
 
-streamlit.text("\U0001F600")
+# streamlit.text("\U0001F600") --this code shows a smiley face emoji
+
 streamlit.title(':banana::strawberry: Build Your Own Fruit Smoothie :kiwifruit::grapes:')
 
 import pandas as pd
