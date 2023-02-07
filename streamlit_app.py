@@ -12,7 +12,7 @@ streamlit.text('🥑 🍞 Avacado Toast')
 
 # streamlit.title(':banana::strawberry: Build Your Own Fruit Smoothie :kiwifruit::grapes:') -- this didn't format on the page correctly
 
-streamlit.title('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇') -
+streamlit.title('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
 import pandas as pd
 my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
