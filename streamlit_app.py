@@ -3,6 +3,8 @@ import pandas as pd
 import requests
 import snowflake.connector
 
+from urllib.error import URLError # this library is for error handling
+
 streamlit.title("My Mom's New Healthy Diner")
 
 streamlit.header('Breakfast Favorites')
