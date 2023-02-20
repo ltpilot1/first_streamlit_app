@@ -45,6 +45,6 @@ fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # output it to the screen as a table
 streamlit.dataframe(fruityvice_normalized)
 
-#The requirements.txt file you just added to your project tells Streamlit what libraries you plan to use in your project so it can add them in advance.
+# The requirements.txt file you just added to your project tells Streamlit what libraries you plan to use in your project so it can add them in advance.
 # The line shown below will tell this py file to use the library you added to the project. 
 import snowflake.connector 
