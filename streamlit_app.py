@@ -61,6 +61,6 @@ import snowflake.connector
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
 my_cur.execute("SELECT * FROM fruit_load_list")
-my_data_rows = my_cur.fetchone()   # changing this to my_data_row returns just one row
+my_data_rows = my_cur.fetchall()   # changed the variable from my_data_row and the function my_cur.fetchone() which returns just one row to fetchall()
 streamlit.header("The fruit load list contains:")
-streamlit.dataframe(my_data_rows)  # changing this to my_data_row returns just one row
+streamlit.dataframe(my_data_rows)  # updated the variable from my_data_row
