@@ -1,4 +1,7 @@
 import streamlit
+import pandas as pd
+import requests
+import snowflake.connector
 
 streamlit.title("My Mom's New Healthy Diner")
 
@@ -13,7 +16,7 @@ streamlit.text('🥑 🍞 Avacado Toast')
 streamlit.header(':banana::mango: Build Your Own Fruit Smoothie :kiwifruit::grapes:') 
 # streamlit.title('🍌🥭 Build Your Own Fruit Smoothie 🥝🍇')
 
-import pandas as pd
+# import pandas as pd  -- Moved to the top to better organize the code
 my_fruit_list = pd.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 my_fruit_list = my_fruit_list.set_index('Fruit')  #this puts the name of the fruit as opposed to the number of the row corresponding to the fruit in the picker list
 
@@ -34,7 +37,7 @@ streamlit.header('Fruityvice Fruit Advice!')
 fruit_choice = streamlit.text_input('What fruit would you like information about?', 'Kiwi')
 streamlit.write('The user entered', fruit_choice)
 
-import requests
+# import requests  -- Moved to the top to better organize the code
 #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi") # hard coded fruit value before creating the user input variable
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
 #streamlit.text(fruityvice_response) this showed <Response [200]> in the app
@@ -45,9 +48,12 @@ fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
 # output it to the screen as a table
 streamlit.dataframe(fruityvice_normalized)
 
+# while troubleshooting this will stop the app from running anything past here
+streamlit.stop()
+
 # The requirements.txt file you just added to your project tells Streamlit what libraries you plan to use in your project so it can add them in advance.
 # The line shown below will tell this py file to use the library you added to the project. 
-import snowflake.connector 
+# import snowflake.connector  -- Moved to the top to better organize the code
 
 # Let's query our trial account metadata
 # my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
