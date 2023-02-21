@@ -112,7 +112,7 @@ if streamlit.button('Get Fruit Load List'):
                                              # which returns just one row to fetchall()
 
 # while troubleshooting this will stop the app from running anything past here
-streamlit.stop()
+# streamlit.stop()
 
 
 # Allow the end user to add a fruit to the list
