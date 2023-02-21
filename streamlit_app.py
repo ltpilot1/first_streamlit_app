@@ -53,7 +53,7 @@ try:
 except URLError as e:
       streamlit.error()
       
-  streamlit.write('The user entered', fruit_choice)
+streamlit.write('The user entered', fruit_choice)
 
 # import requests  -- Moved to the top to better organize the code
 #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi") # hard coded fruit value before creating the user input variable
