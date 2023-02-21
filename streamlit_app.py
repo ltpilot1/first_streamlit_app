@@ -36,19 +36,35 @@ streamlit.dataframe(fruits_to_show)
 #New Section to display fruityvice api response
 streamlit.header('Fruityvice Fruit Advice!')
 # this addas a text entry box and sends the input to Fruityvice as Part of the API Call
-fruit_choice = streamlit.text_input('What fruit would you like information about?', 'Kiwi')
-streamlit.write('The user entered', fruit_choice)
+     # most current revision put the try: and if statements in and here is the lesson verbiage: 
+             # Introducing this structure allows us to separate the code that is loaded once from 
+             # the code that should be repeated each time a new value is entered. Notice there are 
+             # three lines of code under the ELSE. These are important steps we will be repeating. 
+             # We can pull them out into a separate bit of code called a function. We'll do that next. 
+try:
+  fruit_choice = streamlit.text_input('What fruit would you like information about?')
+  if not fruit_choice:
+      streamlit.error("Please select a fruit to get information.")
+   else:
+      fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+      fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+      streamlit.dataframe(fruityvice_normalized)
+     
+   except URLError as e:
+      streamlit.error()
+      
+  streamlit.write('The user entered', fruit_choice)
 
 # import requests  -- Moved to the top to better organize the code
 #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "kiwi") # hard coded fruit value before creating the user input variable
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice)
+#fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice) -- Moved above into the if statement.
 #streamlit.text(fruityvice_response) this showed <Response [200]> in the app
 # streamlit.text(fruityvice_response.json()) -- this just writes the data to the screen
 
 # take the json version of the response and normalize it
-fruityvice_normalized = pd.json_normalize(fruityvice_response.json())
+# fruityvice_normalized = pd.json_normalize(fruityvice_response.json()) -- Moved above into the if statement.
 # output it to the screen as a table
-streamlit.dataframe(fruityvice_normalized)
+# streamlit.dataframe(fruityvice_normalized) -- Moved above into the if statement.
 
 # while troubleshooting this will stop the app from running anything past here
 streamlit.stop()
