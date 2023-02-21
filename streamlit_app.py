@@ -46,6 +46,14 @@ streamlit.header('Fruityvice Fruit Advice!')
              # the code that should be repeated each time a new value is entered. Notice there are 
              # three lines of code under the ELSE. These are important steps we will be repeating. 
              # We can pull them out into a separate bit of code called a function. We'll do that next. 
+
+ # when a fruit is entered into the text box like 'Kiwi' then here is the sequence of events
+     # 1 - Kiwi gets set as fruit_choice
+     # 2 - fruit_choice now returns the first if condition as false and skips to the else clause
+     # 3 - fruit_choice = 'Kiwi' gets set into the local variable this_fruit_choice = 'Kiwi' and runs through the function above get_fruityvice_data
+     # 4 - the return data from the function gets set into fruityvice_normalized which then is set into back_from_function as the result of the get_fruityvice_data
+     # 5 - back_from_function then feeds into the streamlit.dataframe(back_from_function) where it's displayed on the app
+     
 try:
   fruit_choice = streamlit.text_input('What fruit would you like information about?')
   if not fruit_choice:
@@ -86,12 +94,25 @@ streamlit.stop()
 # streamlit.text(my_data_row)
 
 # Now Let's Query Some Data, Instead of looking at metadata
-my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
-my_cur = my_cnx.cursor()
-my_cur.execute("SELECT * FROM fruit_load_list")
-my_data_rows = my_cur.fetchall()   # changed the variable from my_data_row and the function my_cur.fetchone() which returns just one row to fetchall()
 streamlit.header("The fruit load list contains:")
-streamlit.dataframe(my_data_rows)  # updated the variable from my_data_row
+#Snowflake-related functions
+def get_fruit_load_list():
+     with my_cnx.cursor() as my_cur:
+          my_cur.execute("SELECT * FROM fruit_load_list")
+          return my_cur.fetchall()
+    
+# Add a button to load the fruit
+if streamlit.button('Get Fruit Load List')
+     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+     my_data_rows = get_fruit_load_list()
+     streamlit.dataframe(my_data_rows)  # updated the variable from my_data_row
+
+     # my_data_rows = my_cur.fetchall()   -- this is now old code that got changed when the 
+                                             # new function get_fruit_load_list was created 
+                                             # and the button generated this. The old comment was:  
+                                             # changed the variable from my_data_row and the function my_cur.fetchone() 
+                                             # which returns just one row to fetchall()
+
 
 # Allow the end user to add a fruit to the list
 add_my_fruit = streamlit.text_input('What fruit would you like to add?', 'jackfruit')
