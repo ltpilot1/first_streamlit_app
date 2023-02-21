@@ -92,17 +92,19 @@ streamlit.write('The user entered', fruit_choice)
 # streamlit.text(my_data_row)
 
 # Now Let's Query Some Data, Instead of looking at metadata
-streamlit.header("The fruit load list contains:")
+streamlit.header("View Our Fruit List - Add Your Favorites!")
 #Snowflake-related functions
 def get_fruit_load_list():
      with my_cnx.cursor() as my_cur:
           my_cur.execute("SELECT * FROM fruit_load_list")
           return my_cur.fetchall()
     
-# Add a button to load the fruit
-if streamlit.button('Get Fruit Load List'):
+# Add a button to load the fruit cnx means connection
+     # its important to close a connection after it's opened to save on Snowflake credits
+if streamlit.button('Get Fruit List'):
      my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
      my_data_rows = get_fruit_load_list()
+     my_cnx.close()
      streamlit.dataframe(my_data_rows)  # updated the variable from my_data_row
 
      # my_data_rows = my_cur.fetchall()   -- this is now old code that got changed when the 
@@ -125,6 +127,7 @@ add_my_fruit = streamlit.text_input('What fruit would you like to add?')   # the
 if streamlit.button('Add a Fruit to the List'):
      my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
      back_from_function = insert_row_snowflake(add_my_fruit)
+     my_cnx.close()
      streamlit.text(back_from_function)
 
 
