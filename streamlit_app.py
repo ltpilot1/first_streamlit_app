@@ -78,8 +78,6 @@ streamlit.write('The user entered', fruit_choice)
 # output it to the screen as a table
 # streamlit.dataframe(fruityvice_normalized) -- Moved above into the if statement.
 
-# while troubleshooting this will stop the app from running anything past here
-streamlit.stop()
 
 # The requirements.txt file you just added to your project tells Streamlit what libraries you plan to use in your project so it can add them in advance.
 # The line shown below will tell this py file to use the library you added to the project. 
@@ -112,6 +110,9 @@ if streamlit.button('Get Fruit Load List'):
                                              # and the button generated this. The old comment was:  
                                              # changed the variable from my_data_row and the function my_cur.fetchone() 
                                              # which returns just one row to fetchall()
+
+# while troubleshooting this will stop the app from running anything past here
+streamlit.stop()
 
 
 # Allow the end user to add a fruit to the list
